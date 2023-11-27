@@ -13,6 +13,7 @@ namespace FYP.Data
         }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<CategoryRequest> CategoryRequests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
