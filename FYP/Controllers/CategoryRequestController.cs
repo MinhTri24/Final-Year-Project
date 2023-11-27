@@ -1,4 +1,5 @@
 ﻿using FYP.Data;
+using FYP.Data.Repository.IRepository;
 using FYP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,16 +8,16 @@ namespace FYP.Controllers
 {
     public class CategoryRequestController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryRequestController(ApplicationDbContext db)
+        public CategoryRequestController(IUnitOfWork unitOfWork)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            List<CategoryRequest> objList = _db.CategoryRequests.ToList();
+            List<CategoryRequest> objList = _unitOfWork.CategoryRequest.GetAll().ToList();
             return View(objList);
         }
 
@@ -39,8 +40,8 @@ namespace FYP.Controllers
                     IsApproved = null,
                     CreateAt = DateTime.Now
                 };
-                _db.CategoryRequests.Add(newObj);
-                _db.SaveChanges();
+                _unitOfWork.CategoryRequest.Add(newObj);
+                _unitOfWork.Save();
                 TempData["success"] = "Request created successfully";
                 return RedirectToAction("Index");
             }
@@ -51,14 +52,14 @@ namespace FYP.Controllers
         [HttpPost]
         public IActionResult Approve(int id)
         {
-            var obj = _db.CategoryRequests.Find(id);
+            var obj = _unitOfWork.CategoryRequest.Get(u => u.Id == id);
             if (obj == null)
             {
                 TempData["error"] = "Request not found";
                 return RedirectToAction("Index");
             }
-            var category = _db.Categories.FirstOrDefault(c => c.Name == obj.Name);
-            var lastCategory = _db.Categories.OrderByDescending(c => c.Id).FirstOrDefault();
+            var category = _unitOfWork.Category.Get(c => c.Name == obj.Name);
+            var lastCategory = _unitOfWork.Category.OrderByDescending().FirstOrDefault();
             int lastCategoryId = lastCategory != null ? lastCategory.Id : 0;
             if (category == null)
             {
@@ -67,8 +68,8 @@ namespace FYP.Controllers
                     Name = obj.Name,
                 };
                 obj.IsApproved = true;
-                _db.Categories.Add(newCategory);
-                _db.SaveChanges();
+                _unitOfWork.Category.Add(newCategory);
+                _unitOfWork.Save();
                 TempData["success"] = "Request approved successfully";
                 return RedirectToAction("Index");
             }
@@ -84,11 +85,11 @@ namespace FYP.Controllers
         [HttpPost]
         public IActionResult Reject(int id)
         {
-            var obj = _db.CategoryRequests.Find(id);
+            var obj = _unitOfWork.CategoryRequest.Get(u => u.Id == id);
             if (obj != null)
             {
                 obj.IsApproved = false;
-                _db.SaveChanges();
+                _unitOfWork.Save();
                 TempData["success"] = "Request rejected successfully";
                 return RedirectToAction("Index");
             }
@@ -103,11 +104,11 @@ namespace FYP.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            var obj = _db.CategoryRequests.Find(id);
+            var obj = _unitOfWork.CategoryRequest.Get(u => u.Id == id);
             if (obj != null)
             {
-                _db.CategoryRequests.Remove(obj);
-                _db.SaveChanges();
+                _unitOfWork.CategoryRequest.Remove(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Request deleted successfully";
                 return RedirectToAction("Index");
                 
