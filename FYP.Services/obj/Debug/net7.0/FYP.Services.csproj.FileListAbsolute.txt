@@ -1,0 +1,11 @@
+E:\HCI\FYP\FYP.Services\bin\Debug\net7.0\FYP.Services.deps.json
+E:\HCI\FYP\FYP.Services\bin\Debug\net7.0\FYP.Services.dll
+E:\HCI\FYP\FYP.Services\bin\Debug\net7.0\FYP.Services.pdb
+E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.GeneratedMSBuildEditorConfig.editorconfig
+E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.AssemblyInfoInputs.cache
+E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.AssemblyInfo.cs
+E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.csproj.CoreCompileInputs.cache
+E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.dll
+E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\refint\FYP.Services.dll
+E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.pdb
+E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\ref\FYP.Services.dll

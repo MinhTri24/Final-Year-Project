@@ -1,0 +1,17 @@
+E:\HCI\FYP\FYP.Data\bin\Debug\net7.0\FYP.Data.deps.json
+E:\HCI\FYP\FYP.Data\bin\Debug\net7.0\FYP.Data.dll
+E:\HCI\FYP\FYP.Data\bin\Debug\net7.0\FYP.Data.pdb
+E:\HCI\FYP\FYP.Data\bin\Debug\net7.0\FYP.Models.dll
+E:\HCI\FYP\FYP.Data\bin\Debug\net7.0\FYP.Services.dll
+E:\HCI\FYP\FYP.Data\bin\Debug\net7.0\FYP.Models.pdb
+E:\HCI\FYP\FYP.Data\bin\Debug\net7.0\FYP.Services.pdb
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\FYP.Data.csproj.AssemblyReference.cache
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\FYP.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\FYP.Data.AssemblyInfoInputs.cache
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\FYP.Data.AssemblyInfo.cs
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\FYP.Data.csproj.CoreCompileInputs.cache
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\FYP.Data.csproj.CopyComplete
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\FYP.Data.dll
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\refint\FYP.Data.dll
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\FYP.Data.pdb
+E:\HCI\FYP\FYP.Data\obj\Debug\net7.0\ref\FYP.Data.dll
