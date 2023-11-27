@@ -2800,6 +2800,9 @@
         }
       },
       "FYP.Services/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "7.0.13"
+        },
         "runtime": {
           "FYP.Services.dll": {}
         }

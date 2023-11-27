@@ -3,8 +3,9 @@ using FYP.Data.Repository.IRepository;
 using FYP.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FYP.Controllers
+namespace FYP.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

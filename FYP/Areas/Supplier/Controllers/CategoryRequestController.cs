@@ -4,8 +4,9 @@ using FYP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace FYP.Controllers
+namespace FYP.Areas.Supplier.Controllers
 {
+    [Area("Supplier")]
     public class CategoryRequestController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -111,7 +112,7 @@ namespace FYP.Controllers
                 _unitOfWork.Save();
                 TempData["success"] = "Request deleted successfully";
                 return RedirectToAction("Index");
-                
+
             }
             TempData["error"] = "Request not found";
             return RedirectToAction("Index");

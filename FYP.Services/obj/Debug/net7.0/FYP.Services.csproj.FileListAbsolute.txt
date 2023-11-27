@@ -9,3 +9,4 @@ E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.dll
 E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\refint\FYP.Services.dll
 E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.pdb
 E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\ref\FYP.Services.dll
+E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.csproj.AssemblyReference.cache
