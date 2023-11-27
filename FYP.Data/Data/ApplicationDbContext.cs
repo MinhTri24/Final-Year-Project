@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using FYP.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,9 +12,21 @@ namespace FYP.Data
         {
         }
 
+        public DbSet<Category> Categories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<Category>().HasData(
+                new Category { Id = 1, Name = "Crops" },
+                new Category { Id = 2, Name = "Livestock" },
+                new Category { Id = 3, Name = "Aquaculture" },
+                new Category { Id = 4, Name = "Cereal Grains" },
+                new Category { Id = 5, Name = "Oilseeds" },
+                new Category { Id = 6, Name = "Miscellaneous Agricultural Products" },
+                new Category { Id = 7, Name = "Other" }
+            );
         }
     }
 }
