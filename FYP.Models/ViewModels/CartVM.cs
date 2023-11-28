@@ -10,6 +10,6 @@ namespace FYP.Models.ViewModels
     {
         public IEnumerable<Cart> CartList { get; set; }
 
-        public double OrderTotal { get; set; }
+        public Order Order { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace FYP.Data.Repository.IRepository
         IProductRepository Product { get; }
         ICartRepository Cart { get; }
         IApplicationUserRepository ApplicationUser { get; }
+        IOrderRepository Order { get; }
+        IOrderDetailRepository OrderDetail { get; }
 
         void Save();
     }

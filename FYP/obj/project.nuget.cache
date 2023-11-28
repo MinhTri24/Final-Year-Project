@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HHlCp4y/E0JAy3oVvRK3JW16l5Wq/i2z3lpeaglyJQV1TaHQN8iztnTXTGW5B4BoV/VBwWqLnAR/DMJ2tfn1lQ==",
+  "dgSpecHash": "fa/IUpUJ5zTmfrfvs2qzjxjoGG+Oki9pJkhxFLcCWcxC3CZmdBh8mzB11YJ6txoD+xsd53fkZb4VI6lfKtCOjQ==",
   "success": true,
   "projectFilePath": "E:\\.NET\\Final-Year-Project\\FYP\\FYP.csproj",
   "expectedPackageFiles": [
@@ -158,6 +158,7 @@
     "C:\\Users\\pmtri\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",
     "C:\\Users\\pmtri\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.4\\sqlitepclraw.lib.e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\pmtri\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.4\\sqlitepclraw.provider.e_sqlite3.2.1.4.nupkg.sha512",
+    "C:\\Users\\pmtri\\.nuget\\packages\\stripe.net\\43.4.0\\stripe.net.43.4.0.nupkg.sha512",
     "C:\\Users\\pmtri\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\pmtri\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\pmtri\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
