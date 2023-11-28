@@ -1,7 +1,9 @@
 ﻿using FYP.Data.Repository.IRepository;
 using FYP.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace FYP.Areas.Customer.Controllers
 {
@@ -25,8 +27,42 @@ namespace FYP.Areas.Customer.Controllers
 
         public IActionResult Details(int productId)
         {
-            Product product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category", includeSecondProperties: "ApplicationUser");
-            return View(product);
+            Cart cart = new()
+            {
+                Product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category", includeSecondProperties: "ApplicationUser"),
+                Quantity = 1,
+                ProductId = productId
+            };
+            return View(cart);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Details(Cart cart)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            cart.ApplicationUserId = userId;
+
+            Cart cartFromDb = _unitOfWork.Cart.Get(u => u.ApplicationUserId == userId &&
+            u.ProductId == cart.ProductId);
+
+            if (cartFromDb != null)
+            {
+                //shopping cart exists
+                cartFromDb.Quantity += cart.Quantity;
+                _unitOfWork.Cart.Update(cartFromDb);
+            }
+            else
+            {
+                //add cart record
+                _unitOfWork.Cart.Add(cart);
+            }
+
+            TempData["success"] = "Cart updated successfully";
+            _unitOfWork.Save();
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()

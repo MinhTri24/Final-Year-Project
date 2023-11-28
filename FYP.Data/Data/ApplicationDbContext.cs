@@ -16,6 +16,7 @@ namespace FYP.Data
         public DbSet<CategoryRequest> CategoryRequests { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

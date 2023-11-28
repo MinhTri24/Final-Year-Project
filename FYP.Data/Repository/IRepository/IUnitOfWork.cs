@@ -11,6 +11,8 @@ namespace FYP.Data.Repository.IRepository
         ICategoryRepository Category { get; }
         ICategoryRequestRepository CategoryRequest { get; }
         IProductRepository Product { get; }
+        ICartRepository Cart { get; }
+        IApplicationUserRepository ApplicationUser { get; }
 
         void Save();
     }

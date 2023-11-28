@@ -13,12 +13,16 @@ namespace FYP.Data.Repository
         public ICategoryRepository Category { get; private set; }
         public ICategoryRequestRepository CategoryRequest { get; private set; }
         public IProductRepository Product { get; private set; }
+        public ICartRepository Cart { get; private set; }
+        public IApplicationUserRepository ApplicationUser { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Category = new CategoryRepository(_db);
             CategoryRequest = new CategoryRequestRepository(_db);
             Product = new ProductRepository(_db);
+            Cart = new CartRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
         }
 
         public void Save()
