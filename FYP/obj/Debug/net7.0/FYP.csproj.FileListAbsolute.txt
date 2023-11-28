@@ -593,3 +593,4 @@ E:\.NET\Final-Year-Project\FYP\obj\Debug\net7.0\FYP.pdb
 E:\.NET\Final-Year-Project\FYP\obj\Debug\net7.0\FYP.genruntimeconfig.cache
 E:\.NET\Final-Year-Project\FYP\obj\Debug\net7.0\ref\FYP.dll
 E:\.NET\Final-Year-Project\FYP\bin\Debug\net7.0\Stripe.net.dll
+E:\.NET\Final-Year-Project\FYP\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Facebook.dll
