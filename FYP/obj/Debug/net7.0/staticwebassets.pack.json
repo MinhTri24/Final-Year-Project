@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\images\\product\\8fa2fcd8-f835-40a3-b6e2-28d40a82a1ee.png"
     },
     {
+      "Id": "E:\\.NET\\Final-Year-Project\\FYP\\wwwroot\\js\\order.js",
+      "PackagePath": "staticwebassets\\js\\order.js"
+    },
+    {
       "Id": "E:\\.NET\\Final-Year-Project\\FYP\\wwwroot\\js\\product.js",
       "PackagePath": "staticwebassets\\js\\product.js"
     },

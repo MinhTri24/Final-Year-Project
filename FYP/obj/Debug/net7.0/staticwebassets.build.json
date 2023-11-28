@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wfXV7cmr4GWueqbQoxEPPEwTt/MVDUhhSbFO+Nz5K3s=",
+  "Hash": "WvKVHvoOa0JfDmBEWqQXnEPJx0xpMhncGOHQfFjrLiI=",
   "Source": "FYP",
   "BasePath": "_content/FYP",
   "Mode": "Default",
@@ -1120,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\product\\8fa2fcd8-f835-40a3-b6e2-28d40a82a1ee.png"
+    },
+    {
+      "Identity": "E:\\.NET\\Final-Year-Project\\FYP\\wwwroot\\js\\order.js",
+      "SourceId": "FYP",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\.NET\\Final-Year-Project\\FYP\\wwwroot\\",
+      "BasePath": "_content/FYP",
+      "RelativePath": "js/order.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\order.js"
     },
     {
       "Identity": "E:\\.NET\\Final-Year-Project\\FYP\\wwwroot\\js\\product.js",

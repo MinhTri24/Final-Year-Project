@@ -155,8 +155,26 @@ namespace FYP.Areas.Customer.Controllers
 
 		public IActionResult OrderConfirmation(int id)
 		{
-			return View(id);
-		}
+            Order order = _unitOfWork.Order.Get(u => u.Id == id, includeProperties: "ApplicationUser");
+
+            var service = new SessionService();
+            Session session = service.Get(order.SessionId);
+
+            if (session.PaymentStatus.ToLower() == "paid")
+            {
+                _unitOfWork.Order.UpdateStripePaymentID(id, session.Id, session.PaymentIntentId);
+                _unitOfWork.Order.UpdateStatus(id, StaticVariables.StatusApproved, StaticVariables.PaymentStatusApproved);
+                _unitOfWork.Save();
+            }
+
+            List<Cart> shoppingCarts = _unitOfWork.Cart
+                .GetAll(u => u.ApplicationUserId == order.ApplicationUserId).ToList();
+
+            _unitOfWork.Cart.RemoveRange(shoppingCarts);
+            _unitOfWork.Save();
+
+            return View(id);
+        }
 
 		public IActionResult Plus(int cartId)
         {
