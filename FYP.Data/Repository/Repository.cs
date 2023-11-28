@@ -18,7 +18,8 @@ namespace FYP.Data.Repository
             _db = db;
             dbSet = _db.Set<T>();
             //_db.Categories == dbSet
-
+            _db.Products.Include(u => u.Category).Include(u => u.CategoryId)
+                        .Include(c => c.ApplicationUser).Include(c => c.ApplicationUserId);
         }
 
         public void Add(T entity)
@@ -26,17 +27,48 @@ namespace FYP.Data.Repository
             dbSet.Add(entity);
         }
 
-        public T Get(Expression<Func<T, bool>> filter)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, string? includeSecondProperties = null)        
         {
             IQueryable<T> query = dbSet;
             query = query.Where(filter);
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties
+                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+            if (!string.IsNullOrEmpty(includeSecondProperties))
+            {
+                foreach (var includeProp in includeSecondProperties
+                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
             return query.FirstOrDefault();
-
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string? includeProperties = null, string? includeSecondProperties = null)
         {
             IQueryable<T> query = dbSet;
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties
+                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+            if (!string.IsNullOrEmpty(includeSecondProperties))
+            {
+                foreach (var includeProp in includeSecondProperties
+                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
             return query.ToList();
         }
 

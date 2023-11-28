@@ -10,6 +10,7 @@ namespace FYP.Data.Repository.IRepository
     {
         ICategoryRepository Category { get; }
         ICategoryRequestRepository CategoryRequest { get; }
+        IProductRepository Product { get; }
 
         void Save();
     }

@@ -3070,11 +3070,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\HCI\\FYP\\FYP.Data\\FYP.Data.csproj",
+      "projectUniqueName": "E:\\.NET\\Final-Year-Project\\FYP.Data\\FYP.Data.csproj",
       "projectName": "FYP.Data",
-      "projectPath": "E:\\HCI\\FYP\\FYP.Data\\FYP.Data.csproj",
+      "projectPath": "E:\\.NET\\Final-Year-Project\\FYP.Data\\FYP.Data.csproj",
       "packagesPath": "C:\\Users\\pmtri\\.nuget\\packages\\",
-      "outputPath": "E:\\HCI\\FYP\\FYP.Data\\obj\\",
+      "outputPath": "E:\\.NET\\Final-Year-Project\\FYP.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3095,11 +3095,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\HCI\\FYP\\FYP.Models\\FYP.Models.csproj": {
-              "projectPath": "E:\\HCI\\FYP\\FYP.Models\\FYP.Models.csproj"
+            "E:\\.NET\\Final-Year-Project\\FYP.Models\\FYP.Models.csproj": {
+              "projectPath": "E:\\.NET\\Final-Year-Project\\FYP.Models\\FYP.Models.csproj"
             },
-            "E:\\HCI\\FYP\\FYP.Services\\FYP.Services.csproj": {
-              "projectPath": "E:\\HCI\\FYP\\FYP.Services\\FYP.Services.csproj"
+            "E:\\.NET\\Final-Year-Project\\FYP.Services\\FYP.Services.csproj": {
+              "projectPath": "E:\\.NET\\Final-Year-Project\\FYP.Services\\FYP.Services.csproj"
             }
           }
         }

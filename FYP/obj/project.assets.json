@@ -12043,11 +12043,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\HCI\\FYP\\FYP\\FYP.csproj",
+      "projectUniqueName": "E:\\.NET\\Final-Year-Project\\FYP\\FYP.csproj",
       "projectName": "FYP",
-      "projectPath": "E:\\HCI\\FYP\\FYP\\FYP.csproj",
+      "projectPath": "E:\\.NET\\Final-Year-Project\\FYP\\FYP.csproj",
       "packagesPath": "C:\\Users\\pmtri\\.nuget\\packages\\",
-      "outputPath": "E:\\HCI\\FYP\\FYP\\obj\\",
+      "outputPath": "E:\\.NET\\Final-Year-Project\\FYP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -12068,8 +12068,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\HCI\\FYP\\FYP.Data\\FYP.Data.csproj": {
-              "projectPath": "E:\\HCI\\FYP\\FYP.Data\\FYP.Data.csproj"
+            "E:\\.NET\\Final-Year-Project\\FYP.Data\\FYP.Data.csproj": {
+              "projectPath": "E:\\.NET\\Final-Year-Project\\FYP.Data\\FYP.Data.csproj"
             }
           }
         }

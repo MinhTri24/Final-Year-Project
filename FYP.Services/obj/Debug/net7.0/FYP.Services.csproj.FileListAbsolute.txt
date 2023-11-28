@@ -10,3 +10,15 @@ E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\refint\FYP.Services.dll
 E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.pdb
 E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\ref\FYP.Services.dll
 E:\HCI\FYP\FYP.Services\obj\Debug\net7.0\FYP.Services.csproj.AssemblyReference.cache
+E:\.NET\Final-Year-Project\FYP.Services\bin\Debug\net7.0\FYP.Services.deps.json
+E:\.NET\Final-Year-Project\FYP.Services\bin\Debug\net7.0\FYP.Services.dll
+E:\.NET\Final-Year-Project\FYP.Services\bin\Debug\net7.0\FYP.Services.pdb
+E:\.NET\Final-Year-Project\FYP.Services\obj\Debug\net7.0\FYP.Services.csproj.AssemblyReference.cache
+E:\.NET\Final-Year-Project\FYP.Services\obj\Debug\net7.0\FYP.Services.GeneratedMSBuildEditorConfig.editorconfig
+E:\.NET\Final-Year-Project\FYP.Services\obj\Debug\net7.0\FYP.Services.AssemblyInfoInputs.cache
+E:\.NET\Final-Year-Project\FYP.Services\obj\Debug\net7.0\FYP.Services.AssemblyInfo.cs
+E:\.NET\Final-Year-Project\FYP.Services\obj\Debug\net7.0\FYP.Services.csproj.CoreCompileInputs.cache
+E:\.NET\Final-Year-Project\FYP.Services\obj\Debug\net7.0\FYP.Services.dll
+E:\.NET\Final-Year-Project\FYP.Services\obj\Debug\net7.0\refint\FYP.Services.dll
+E:\.NET\Final-Year-Project\FYP.Services\obj\Debug\net7.0\FYP.Services.pdb
+E:\.NET\Final-Year-Project\FYP.Services\obj\Debug\net7.0\ref\FYP.Services.dll

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\HCI\\FYP\\FYP.Models\\FYP.Models.csproj",
+      "projectUniqueName": "E:\\.NET\\Final-Year-Project\\FYP.Models\\FYP.Models.csproj",
       "projectName": "FYP.Models",
-      "projectPath": "E:\\HCI\\FYP\\FYP.Models\\FYP.Models.csproj",
+      "projectPath": "E:\\.NET\\Final-Year-Project\\FYP.Models\\FYP.Models.csproj",
       "packagesPath": "C:\\Users\\pmtri\\.nuget\\packages\\",
-      "outputPath": "E:\\HCI\\FYP\\FYP.Models\\obj\\",
+      "outputPath": "E:\\.NET\\Final-Year-Project\\FYP.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

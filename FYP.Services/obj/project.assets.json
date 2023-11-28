@@ -763,11 +763,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\HCI\\FYP\\FYP.Services\\FYP.Services.csproj",
+      "projectUniqueName": "E:\\.NET\\Final-Year-Project\\FYP.Services\\FYP.Services.csproj",
       "projectName": "FYP.Services",
-      "projectPath": "E:\\HCI\\FYP\\FYP.Services\\FYP.Services.csproj",
+      "projectPath": "E:\\.NET\\Final-Year-Project\\FYP.Services\\FYP.Services.csproj",
       "packagesPath": "C:\\Users\\pmtri\\.nuget\\packages\\",
-      "outputPath": "E:\\HCI\\FYP\\FYP.Services\\obj\\",
+      "outputPath": "E:\\.NET\\Final-Year-Project\\FYP.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
