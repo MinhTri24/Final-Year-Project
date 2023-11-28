@@ -10,6 +10,7 @@
         "dependencies": {
           "FYP.Data": "1.0.0",
           "Microsoft.AspNetCore.Authentication.Facebook": "7.0.13",
+          "Microsoft.AspNetCore.Authentication.Google": "7.0.13",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "7.0.13",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.13",
           "Microsoft.AspNetCore.Identity.UI": "7.0.13",
@@ -600,6 +601,14 @@
       "Microsoft.AspNetCore.Authentication.Facebook/7.0.13": {
         "runtime": {
           "lib/net7.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "assemblyVersion": "7.0.13.0",
+            "fileVersion": "7.0.1323.52007"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/7.0.13": {
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
             "assemblyVersion": "7.0.13.0",
             "fileVersion": "7.0.1323.52007"
           }
@@ -3207,6 +3216,13 @@
       "sha512": "sha512-QQA3Srv6K4zxwHe1NLKAObLS877Jwlhj/HHniq8o0REmi2FbCsLz3AokHKK467l++1uxYWyymX9o5eN+7uPe1A==",
       "path": "microsoft.aspnetcore.authentication.facebook/7.0.13",
       "hashPath": "microsoft.aspnetcore.authentication.facebook.7.0.13.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/7.0.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-auoXmLwSnmzgmbIyJdElEQ0c/Uj3WL/nrlXU0h0xpKa5ZHSozjt3ywb0O3PJ3NLge0TR4rOT9m8O/8ZSC29eKw==",
+      "path": "microsoft.aspnetcore.authentication.google/7.0.13",
+      "hashPath": "microsoft.aspnetcore.authentication.google.7.0.13.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/7.0.13": {
       "type": "package",

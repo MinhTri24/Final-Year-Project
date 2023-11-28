@@ -30,6 +30,11 @@ builder.Services.AddAuthentication().AddFacebook(options =>
     options.AppId = "334535615994875";
     options.AppSecret = "d029e3ba958734183ca85d8da8ef73e9";
 });
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    options.ClientId = "525899625528-m5ne0oq1onvl2i28qfq2hjiavhoscfi6.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
