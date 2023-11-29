@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "m+PkjKQe+fVuwXM0/lMAaHULvhebqQMHgGW7jFwSFH/5MAqDlNKJH+uiZ89C+FDFb5rZEdEjAjhrqMq5MWYSVQ==",
+  "dgSpecHash": "NFH4PoWJ5riBBBQihOaqDnnIFsxXnRH2HwhC/4K4If4JqhdDaYj8ewqPmP/COtVtP4cI/iWXNO8CVARB57cihA==",
   "success": true,
   "projectFilePath": "E:\\.NET\\Final-Year-Project\\FYP.Services\\FYP.Services.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,11 @@
     "C:\\Users\\pmtri\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "C:\\Users\\pmtri\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\pmtri\\.nuget\\packages\\microsoft.extensions.options\\7.0.1\\microsoft.extensions.options.7.0.1.nupkg.sha512",
-    "C:\\Users\\pmtri\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+    "C:\\Users\\pmtri\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\pmtri\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\pmtri\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
+    "C:\\Users\\pmtri\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\pmtri\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512"
   ],
   "logs": []
 }

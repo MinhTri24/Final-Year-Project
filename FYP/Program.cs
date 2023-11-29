@@ -6,8 +6,10 @@ using Microsoft.EntityFrameworkCore;
 using FYP.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Stripe;
+using CloudinaryDotNet;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -35,6 +37,13 @@ builder.Services.AddAuthentication().AddGoogle(options =>
     options.ClientId = "525899625528-m5ne0oq1onvl2i28qfq2hjiavhoscfi6.apps.googleusercontent.com";
     options.ClientSecret = "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";
 });
+
+var cloudName = builder.Configuration.GetSection("Cloudinary:CloudName").Get<string>();
+var apiKey = builder.Configuration.GetSection("Cloudinary:ApiKey").Get<string>();
+var apiSecret = builder.Configuration.GetSection("Cloudinary:ApiSecret").Get<string>();
+
+builder.Services.Configure<CloudinarySetting>(builder.Configuration.GetSection("Cloudinary"));
+builder.Services.AddSingleton<Cloudinary>(x => new Cloudinary(new CloudinaryDotNet.Account(cloudName, apiKey, apiSecret)));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

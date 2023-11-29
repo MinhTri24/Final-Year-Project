@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\js\\product.js"
     },
     {
+      "Id": "E:\\.NET\\Final-Year-Project\\FYP\\wwwroot\\js\\products.js",
+      "PackagePath": "staticwebassets\\js\\products.js"
+    },
+    {
       "Id": "E:\\.NET\\Final-Year-Project\\FYP\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

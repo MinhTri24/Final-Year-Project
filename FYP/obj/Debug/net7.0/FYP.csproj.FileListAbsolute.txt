@@ -595,3 +595,6 @@ E:\.NET\Final-Year-Project\FYP\obj\Debug\net7.0\ref\FYP.dll
 E:\.NET\Final-Year-Project\FYP\bin\Debug\net7.0\Stripe.net.dll
 E:\.NET\Final-Year-Project\FYP\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 E:\.NET\Final-Year-Project\FYP\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Google.dll
+E:\.NET\Final-Year-Project\FYP\bin\Debug\net7.0\CloudinaryDotNet.dll
+E:\.NET\Final-Year-Project\FYP\bin\Debug\net7.0\dotenv.net.dll
+E:\.NET\Final-Year-Project\FYP\bin\Debug\net7.0\RestSharp.dll

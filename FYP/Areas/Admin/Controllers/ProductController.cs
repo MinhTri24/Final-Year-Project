@@ -1,4 +1,6 @@
-﻿using FYP.Data.Repository;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using FYP.Data.Repository;
 using FYP.Data.Repository.IRepository;
 using FYP.Models;
 using FYP.Models.ViewModels;
@@ -13,16 +15,11 @@ namespace FYP.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        public ProductController(IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor, 
-                UserManager<IdentityUser> userManager, IWebHostEnvironment webHostEnvironment)
+        private readonly Cloudinary _cloudinary;
+        public ProductController(IUnitOfWork unitOfWork, Cloudinary cloudinary)
         {
             _unitOfWork = unitOfWork;
-            _userManager = userManager;
-            _httpContextAccessor = httpContextAccessor;
-            _webHostEnvironment = webHostEnvironment;
+            _cloudinary = cloudinary;
         }
 
         public IActionResult Index()
@@ -32,7 +29,7 @@ namespace FYP.Areas.Admin.Controllers
             return View(products);
         }
 
-        public IActionResult Createdit(int? id)
+/*        public IActionResult Createdit(int? id)
         {
             ProductVM productVM = new()
             {
@@ -57,37 +54,22 @@ namespace FYP.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Createdit(ProductVM productVM, IFormFile? file)
+        public IActionResult Createdit([FromForm] ProductVM productVM)
         {
-            var currentUser = _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            if (currentUser != null)
+            if (userId != null)
             {
-                string wwwRootPath = _webHostEnvironment.WebRootPath;
-                if (file != null)
+                var file = productVM.Image;
+                var uploadParams = new CloudinaryDotNet.Actions.ImageUploadParams
                 {
-                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string productPath = Path.Combine(wwwRootPath, @"images\product");
+                    File = new FileDescription(file.FileName, file.OpenReadStream())
+                };
 
-                    if (!string.IsNullOrEmpty(productVM.Product.ImageUrl))
-                    {
-                        //delete the old image
-                        var oldImagePath =
-                            Path.Combine(wwwRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
+                var uploadResult = _cloudinary.Upload(uploadParams);
 
-                        if (System.IO.File.Exists(oldImagePath))
-                        {
-                            System.IO.File.Delete(oldImagePath);
-                        }
-                    }
-
-                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
-                    {
-                        file.CopyTo(fileStream);
-                    }
-
-                    productVM.Product.ImageUrl = @"\images\product\" + fileName;
-                }
+                productVM.Product.ImageUrl = uploadResult.SecureUri.AbsoluteUri;
 
                 if (productVM.Product.ImageUrl == null)
                 {
@@ -103,8 +85,6 @@ namespace FYP.Areas.Admin.Controllers
                     productVM.Product.IsAvailable = false;
                 }
 
-                productVM.Product.ApplicationUserId = currentUser.Result.Id;
-
                 if (productVM.Product.Id == 0)
                 {
                     _unitOfWork.Product.Add(productVM.Product);
@@ -113,6 +93,71 @@ namespace FYP.Areas.Admin.Controllers
                 {
                     _unitOfWork.Product.Update(productVM.Product);
                 }
+                productVM.Product.ApplicationUserId = userId;
+                _unitOfWork.Save();
+                TempData["success"] = "Product created successfully";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                productVM.CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+                TempData["error"] = "Product created unsuccessfully";
+                return View(productVM);
+            }
+        }*/
+
+        public IActionResult Create()
+        {
+               ProductVM productVM = new()
+               {
+                CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+                Product = new Product()
+            };
+            return View(productVM);
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromForm] ProductVM productVM)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (userId != null)
+            {
+                var file = productVM.Image;
+                var uploadParams = new CloudinaryDotNet.Actions.ImageUploadParams
+                {
+                    File = new FileDescription(file.FileName, file.OpenReadStream())
+                };
+
+                var uploadResult = _cloudinary.Upload(uploadParams);
+
+                productVM.Product.ImageUrl = uploadResult.SecureUri.AbsoluteUri;
+
+                if (productVM.Product.ImageUrl == null)
+                {
+                    productVM.Product.ImageUrl = "https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg";
+                }
+
+                if (productVM.Product.Stock > 0)
+                {
+                    productVM.Product.IsAvailable = true;
+                }
+                else
+                {
+                    productVM.Product.IsAvailable = false;
+                }
+
+                productVM.Product.ApplicationUserId = userId;
+                _unitOfWork.Product.Add(productVM.Product);
                 _unitOfWork.Save();
                 TempData["success"] = "Product created successfully";
                 return RedirectToAction("Index");
@@ -128,6 +173,82 @@ namespace FYP.Areas.Admin.Controllers
                 return View(productVM);
             }
         }
+
+        public IActionResult Edit(int? id)
+        {             
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            ProductVM productVM = new()
+            {
+                CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+                Product = new Product()
+            };
+            productVM.Product = _unitOfWork.Product.Get(u => u.Id == id);
+
+            if (productVM == null)
+            {
+                return NotFound();
+            }
+            return View(productVM);
+        }
+
+        [HttpPost]
+        public IActionResult Edit([FromForm] ProductVM productVM)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (userId != null)
+            {
+                var file = productVM.Image;
+                var uploadParams = new CloudinaryDotNet.Actions.ImageUploadParams
+                {
+                    File = new FileDescription(file.FileName, file.OpenReadStream())
+                };
+
+                var uploadResult = _cloudinary.Upload(uploadParams);
+
+                productVM.Product.ImageUrl = uploadResult.SecureUri.AbsoluteUri;
+
+                if (productVM.Product.ImageUrl == null)
+                {
+                    productVM.Product.ImageUrl = "https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg";
+                }
+
+                if (productVM.Product.Stock > 0)
+                {
+                    productVM.Product.IsAvailable = true;
+                }
+                else
+                {
+                    productVM.Product.IsAvailable = false;
+                }
+
+                productVM.Product.ApplicationUserId = userId;
+                _unitOfWork.Product.Update(productVM.Product);
+                _unitOfWork.Save();
+                TempData["success"] = "Product updated successfully";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                productVM.CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+                TempData["error"] = "Product updated unsuccessfully";
+                return View(productVM);
+            }
+        }
+
 
         #region API CALLS
 
@@ -146,13 +267,15 @@ namespace FYP.Areas.Admin.Controllers
             {
                 return Json(new { success = false, message = "Error while deleting" });
             }
-            var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath,
-                                productToBeDeleted.ImageUrl.TrimStart('\\'));
 
-            if (System.IO.File.Exists(oldImagePath))
+            var imageUrl = productToBeDeleted.ImageUrl;
+            if (imageUrl != null)
             {
-                System.IO.File.Delete(oldImagePath);
+                var publicId = imageUrl.Substring(imageUrl.LastIndexOf('/') + 1, imageUrl.LastIndexOf('.') - imageUrl.LastIndexOf('/') - 1);
+                var deleteParams = new DeletionParams(publicId);
+                var result = _cloudinary.Destroy(deleteParams);
             }
+
             _unitOfWork.Product.Remove(productToBeDeleted);
             _unitOfWork.Save();
 
