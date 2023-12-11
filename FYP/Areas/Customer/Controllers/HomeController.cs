@@ -47,6 +47,8 @@ namespace FYP.Areas.Customer.Controllers
             Cart cartFromDb = _unitOfWork.Cart.Get(u => u.ApplicationUserId == userId &&
             u.ProductId == cart.ProductId);
 
+            Product productFromDb = _unitOfWork.Product.Get(u => u.Id == cart.ProductId);
+
             if (cartFromDb != null)
             {
                 //shopping cart exists
@@ -57,6 +59,54 @@ namespace FYP.Areas.Customer.Controllers
             {
                 //add cart record
                 _unitOfWork.Cart.Add(cart);
+            }
+
+            if (cartFromDb == null && productFromDb.IsAvailable == true)
+            {
+                if (productFromDb.Stock > 0)
+                {
+                    if (productFromDb.Stock >= cart.Quantity)
+                    {
+                        productFromDb.Stock -= cart.Quantity;
+                        if (productFromDb.Stock == 0)
+                        {
+                            productFromDb.IsAvailable = false;
+                        }
+                        _unitOfWork.Product.Update(productFromDb);
+                    }
+                    else
+                    {
+                        TempData["error"] = "Product is not available";
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+                _unitOfWork.Cart.Add(cart);
+            }
+            else if (cartFromDb != null && productFromDb.IsAvailable == true)
+            {
+                if (productFromDb.Stock > 0)
+                {
+                    if (productFromDb.Stock >= cart.Quantity)
+                    {
+                        productFromDb.Stock -= cart.Quantity;
+                        if (productFromDb.Stock == 0)
+                        {
+                            productFromDb.IsAvailable = false;
+                        }
+                        _unitOfWork.Product.Update(productFromDb);
+                    }
+                    else
+                    {
+                        TempData["error"] = "Product is not available";
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+                _unitOfWork.Cart.Update(cartFromDb);
+            }
+            else
+            {
+                TempData["error"] = "Product is not available";
+                return RedirectToAction(nameof(Index));
             }
 
             TempData["success"] = "Cart updated successfully";

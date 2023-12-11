@@ -3210,11 +3210,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\.NET\\Final-Year-Project\\FYP.Data\\FYP.Data.csproj",
+      "projectUniqueName": "E:\\Final-Year-Project\\FYP.Data\\FYP.Data.csproj",
       "projectName": "FYP.Data",
-      "projectPath": "E:\\.NET\\Final-Year-Project\\FYP.Data\\FYP.Data.csproj",
+      "projectPath": "E:\\Final-Year-Project\\FYP.Data\\FYP.Data.csproj",
       "packagesPath": "C:\\Users\\pmtri\\.nuget\\packages\\",
-      "outputPath": "E:\\.NET\\Final-Year-Project\\FYP.Data\\obj\\",
+      "outputPath": "E:\\Final-Year-Project\\FYP.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3235,11 +3235,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\.NET\\Final-Year-Project\\FYP.Models\\FYP.Models.csproj": {
-              "projectPath": "E:\\.NET\\Final-Year-Project\\FYP.Models\\FYP.Models.csproj"
+            "E:\\Final-Year-Project\\FYP.Models\\FYP.Models.csproj": {
+              "projectPath": "E:\\Final-Year-Project\\FYP.Models\\FYP.Models.csproj"
             },
-            "E:\\.NET\\Final-Year-Project\\FYP.Services\\FYP.Services.csproj": {
-              "projectPath": "E:\\.NET\\Final-Year-Project\\FYP.Services\\FYP.Services.csproj"
+            "E:\\Final-Year-Project\\FYP.Services\\FYP.Services.csproj": {
+              "projectPath": "E:\\Final-Year-Project\\FYP.Services\\FYP.Services.csproj"
             }
           }
         }
@@ -3287,7 +3287,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

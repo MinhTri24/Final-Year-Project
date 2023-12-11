@@ -4,6 +4,8 @@ using FYP.Data.Repository;
 using FYP.Data.Repository.IRepository;
 using FYP.Models;
 using FYP.Models.ViewModels;
+using FYP.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +14,7 @@ using System.Security.Claims;
 namespace FYP.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticVariables.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -28,87 +31,6 @@ namespace FYP.Areas.Admin.Controllers
 
             return View(products);
         }
-
-/*        public IActionResult Createdit(int? id)
-        {
-            ProductVM productVM = new()
-            {
-                CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
-                {
-                    Text = u.Name,
-                    Value = u.Id.ToString()
-                }),
-                Product = new Product()
-            };
-            if (id == null || id == 0)
-            {
-                //create
-                return View(productVM);
-            }
-            else
-            {
-                //update
-                productVM.Product = _unitOfWork.Product.Get(u => u.Id == id);
-                return View(productVM);
-            }
-        }
-
-        [HttpPost]
-        public IActionResult Createdit([FromForm] ProductVM productVM)
-        {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            if (userId != null)
-            {
-                var file = productVM.Image;
-                var uploadParams = new CloudinaryDotNet.Actions.ImageUploadParams
-                {
-                    File = new FileDescription(file.FileName, file.OpenReadStream())
-                };
-
-                var uploadResult = _cloudinary.Upload(uploadParams);
-
-                productVM.Product.ImageUrl = uploadResult.SecureUri.AbsoluteUri;
-
-                if (productVM.Product.ImageUrl == null)
-                {
-                    productVM.Product.ImageUrl = "https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg";
-                }
-
-                if (productVM.Product.Stock > 0)
-                {
-                    productVM.Product.IsAvailable = true;
-                }
-                else
-                {
-                    productVM.Product.IsAvailable = false;
-                }
-
-                if (productVM.Product.Id == 0)
-                {
-                    _unitOfWork.Product.Add(productVM.Product);
-                }
-                else
-                {
-                    _unitOfWork.Product.Update(productVM.Product);
-                }
-                productVM.Product.ApplicationUserId = userId;
-                _unitOfWork.Save();
-                TempData["success"] = "Product created successfully";
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                productVM.CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
-                {
-                    Text = u.Name,
-                    Value = u.Id.ToString()
-                });
-                TempData["error"] = "Product created unsuccessfully";
-                return View(productVM);
-            }
-        }*/
 
         public IActionResult Create()
         {

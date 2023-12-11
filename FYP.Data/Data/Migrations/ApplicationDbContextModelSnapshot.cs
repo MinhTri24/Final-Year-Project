@@ -70,32 +70,32 @@ namespace FYP.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Crops"
+                            Name = "Organic Fruits and Vegetables"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Livestock"
+                            Name = "Grains and Cereals"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Aquaculture"
+                            Name = "Pulses and Legumes"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Cereal Grains"
+                            Name = "Spices and Herbs"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Oilseeds"
+                            Name = "Dairy Products"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Miscellaneous Agricultural Products"
+                            Name = "Meat and Poultry"
                         },
                         new
                         {

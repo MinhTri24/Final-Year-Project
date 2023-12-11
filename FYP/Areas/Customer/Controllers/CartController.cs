@@ -2,6 +2,7 @@
 using FYP.Models;
 using FYP.Models.ViewModels;
 using FYP.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe.Checkout;
 using System.Security.Claims;
@@ -9,6 +10,7 @@ using System.Security.Claims;
 namespace FYP.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    [Authorize]
     public class CartController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -179,6 +181,16 @@ namespace FYP.Areas.Customer.Controllers
 		public IActionResult Plus(int cartId)
         {
             var cartFromDb = _unitOfWork.Cart.Get(u => u.Id == cartId);
+            var productFromDb = _unitOfWork.Product.Get(u => u.Id == cartFromDb.ProductId);
+            if (productFromDb.Stock > 0)
+            {
+                productFromDb.Stock -= 1;
+                if (productFromDb.Stock == 0)
+                {
+                    productFromDb.IsAvailable = false;
+                }
+                _unitOfWork.Product.Update(productFromDb);
+            }
             cartFromDb.Quantity += 1;
             _unitOfWork.Cart.Update(cartFromDb);
             _unitOfWork.Save();
@@ -188,17 +200,36 @@ namespace FYP.Areas.Customer.Controllers
         public IActionResult Minus(int cartId)
         {
             var cartFromDb = _unitOfWork.Cart.Get(u => u.Id == cartId, tracked: true);
+            var productFromDb = _unitOfWork.Product.Get(u => u.Id == cartFromDb.ProductId);
             if (cartFromDb.Quantity <= 1)
             {
-                //remove that from cart
+                if (productFromDb.Stock == 0)
+                {
+                    productFromDb.Stock += 1;
+                    productFromDb.IsAvailable = true;
+                }
+                else
+                {
+                    productFromDb.Stock += 1;
+                }
+                _unitOfWork.Product.Update(productFromDb);
                 _unitOfWork.Cart.Remove(cartFromDb);
             }
             else
             {
+                if (productFromDb.Stock == 0)
+                {
+                    productFromDb.Stock += 1;
+                    productFromDb.IsAvailable = true;
+                }
+                else
+                {
+                    productFromDb.Stock += 1;
+                }
                 cartFromDb.Quantity -= 1;
+                _unitOfWork.Product.Update(productFromDb);
                 _unitOfWork.Cart.Update(cartFromDb);
             }
-
             _unitOfWork.Save();
             return RedirectToAction(nameof(Index));
         }
@@ -206,6 +237,17 @@ namespace FYP.Areas.Customer.Controllers
         public IActionResult Remove(int cartId)
         {
             var cartFromDb = _unitOfWork.Cart.Get(u => u.Id == cartId, tracked: true);
+            var productFromDb = _unitOfWork.Product.Get(u => u.Id == cartFromDb.ProductId);
+            if (productFromDb.Stock == 0)
+            {
+                productFromDb.Stock += cartFromDb.Quantity;
+                productFromDb.IsAvailable = true;
+            }
+            else
+            {
+                productFromDb.Stock += cartFromDb.Quantity;
+            }
+            _unitOfWork.Product.Update(productFromDb);
             _unitOfWork.Cart.Remove(cartFromDb);
             _unitOfWork.Save();
             return RedirectToAction(nameof(Index));
